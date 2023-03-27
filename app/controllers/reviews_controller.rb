@@ -10,8 +10,17 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.movie_id = @movie.id
     @review.user_id = current_user.id
-    @review.save
-    redirect_to movie_path(@movie)
+    if @review.save
+      redirect_to movie_path(@movie)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to movie_path(@review.movie), status: :see_other
   end
 
   private
