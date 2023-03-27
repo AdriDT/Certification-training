@@ -1,16 +1,23 @@
 <h2><%= @movie.name %></h2>
 <p><%= @movie.year %></p>
 <p><%= @movie.description %></p>
+
 <%= link_to "Update Movie", edit_movie_path(@movie) %>
+
+<%= link_to "Add Review", new_movie_review_path(@movie) %>
+
 <%= link_to "Delete",
   movie_path(@movie),
   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
 %>
 
-<p><strong>Reviews</strong></p>
-<ul class="list-group">
-  <% @movie.reviews.each do |review| %>
-    <li class="list-group-item"><%= review.content %></li>
-  <% end %>
-</ul>
-<br>
+<div class="container mt-5">
+      <p><strong>Reviews</strong></p>
+      <ul class="list-group">
+        <% @movie.reviews.each do |review| %>
+          <%= review.content %>
+          <%= link_to "Delete", review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+        <% end %>
+      </ul>
+      <br>
+</div>
