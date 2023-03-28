@@ -1,8 +1,9 @@
-<ul>
+<div class="container movies">
   <% @movies.each do |movie| %>
-    <li><strong><%= link_to movie.title, movie_path(movie) %></strong></li>
-    <li><img alt="Poster" width="200" src="https://image.tmdb.org/t/p/w500<%= movie.poster %>"></li>
-    <li><strong>Year: </strong><%= movie.release_date %></li>
+  <div class="card_movie">
+    <li class="poster" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://image.tmdb.org/t/p/w500<%=movie.poster%>)"> <strong><%= link_to movie.title, movie_path(movie), class: "title-link" %></strong></li>
+    <li><strong>Rating: </strong><%= movie.rating %></li>
     <li><strong>Overview: </strong><%= movie.overview %></li>
+  </div>
   <% end %>
-</ul>
+</div>
