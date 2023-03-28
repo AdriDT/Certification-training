@@ -7,15 +7,24 @@
 #   Character.create(name: "Luke", movie: movies.first)
 Movie.destroy_all
 
-puts "Creating Movies..."
-10.times do
-  movie = Movie.new(
-    name: Faker::Movie.title,
-    year: rand(1980..2022),
-    description: Faker::Lorem.paragraph(sentence_count: 6)
-  )
-  movie.save!
-end
-puts "Movies created !!"
+# puts "Creating Movies..."
+# 10.times do
+#   movie = Movie.new(
+#     title: Faker::Movie.title,
+#     release_date: rand(1980..2022),
+#     overview: Faker::Lorem.paragraph(sentence_count: 6)
+#   )
+#   movie.save!
+# end
+# puts "Movies created !!"
 
-user = User.create ()
+require "json"
+require "open-uri"
+
+url = "https://tmdb.lewagon.com/movie/top_rated"
+movie_serialized = URI.open(url).read
+movies = JSON.parse(movie_serialized)
+
+movies["results"].each do |movie|
+  Movie.create(title: movie['title'], overview: movie['overview'], rating: movie['vote_average'].to_f, release_date: movie['release_date'], poster: movie['poster_path'])
+end

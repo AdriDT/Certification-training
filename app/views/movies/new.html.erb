@@ -3,9 +3,9 @@
     <div class="column">
       <h1>Add a new Movie</h1>
       <%= simple_form_for [@movie] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :year %>
-        <%= f.input :description %>
+        <%= f.input :title %>
+        <%= f.input :release_date %>
+        <%= f.input :overview %>
         <%= f.submit "Add Movie", class: "btn btn-primary" %>
       <% end %>
     </div>
