@@ -1,6 +1,7 @@
 <ul>
   <% @movies.each do |movie| %>
     <li><strong><%= link_to movie.title, movie_path(movie) %></strong></li>
+    <li><img alt="Poster" width="200" src="https://image.tmdb.org/t/p/w500<%= movie.poster %>"></li>
     <li><strong>Year: </strong><%= movie.release_date %></li>
     <li><strong>Overview: </strong><%= movie.overview %></li>
   <% end %>
