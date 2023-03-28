@@ -2,9 +2,9 @@
   <div class="row">
     <div class="column">
       <%= simple_form_for [@movie] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :year %>
-        <%= f.input :description %>
+        <%= f.input :title %>
+        <%= f.input :release_date %>
+        <%= f.input :overview %>
         <%= f.submit "Update Movie", class: "btn btn-primary" %>
       <% end %>
     </div>

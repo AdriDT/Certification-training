@@ -10,9 +10,9 @@ Movie.destroy_all
 puts "Creating Movies..."
 10.times do
   movie = Movie.new(
-    name: Faker::Movie.title,
-    year: rand(1980..2022),
-    description: Faker::Lorem.paragraph(sentence_count: 6)
+    title: Faker::Movie.title,
+    release_date: rand(1980..2022),
+    overview: Faker::Lorem.paragraph(sentence_count: 6)
   )
   movie.save!
 end
