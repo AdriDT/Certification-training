@@ -1,17 +1,25 @@
-<h2><%= @movie.title %></h2>
-<p><img alt="Poster" width="200" src="https://image.tmdb.org/t/p/w500<%=@movie.poster%>"></p>
-<p><%= @movie.rating %></p>
-<p><%= @movie.release_date %></p>
-<p><%= @movie.overview %></p>
+<div class="container">
+  <div class="d-flex">
+    <div class="mr-3">
+      <p><img alt="Poster" width="200" src="https://image.tmdb.org/t/p/w500<%=@movie.poster%>"></p>
+    </div>
+    <div class="d-flex flex-column pl-3">
+      <h2><%= @movie.title %></h2>
+      <p>Rating : <%= @movie.rating %></p>
+      <p>Released date : <%= @movie.release_date %></p>
+      <p>Overview : <%= @movie.overview %></p>
+      <%= link_to "Update Movie", edit_movie_path(@movie) %>
+      
+      <%= link_to "Add Review", new_movie_review_path(@movie) %>
+      
+      <%= link_to "Delete",
+        movie_path(@movie),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    </div>
+  </div>
+</div>
 
-<%= link_to "Update Movie", edit_movie_path(@movie) %>
-
-<%= link_to "Add Review", new_movie_review_path(@movie) %>
-
-<%= link_to "Delete",
-  movie_path(@movie),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
 
 <div class="container mt-5">
       <p><strong>Reviews</strong></p>
