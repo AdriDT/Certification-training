@@ -1,4 +1,4 @@
-<div class="container movies">
+<div class="container movies mb-5">
   <% @movies.each do |movie| %>
   <div class="card_movie">
     <li class="poster" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://image.tmdb.org/t/p/w500<%=movie.poster%>)"> <strong><%= link_to movie.title, movie_path(movie), class: "title-link" %></strong></li>
